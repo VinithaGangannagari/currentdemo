@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.2.0.BUILD-SNAPSHOT'
 	id 'java'
+	id 'com.gradle.build-scan' version '2.2.1'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -22,3 +23,10 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+buildScan {
+    termsOfServiceUrl = 'https://gradle.com/terms-of-service'
+    termsOfServiceAgree = 'yes'
+    //publishAlways()
+}
+
+mainClassName = 'com.example.demo.DemoApplication'
