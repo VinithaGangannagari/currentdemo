@@ -1,10 +1,9 @@
 plugins {
-	id 'org.springframework.boot' version '2.0.5.RELEASE'
-	id 'java'
-	id 'com.gradle.build-scan' version '2.2.1'
+    id 'java'
+    id 'com.gradle.build-scan' version '1.16'
+    id 'org.springframework.boot' version '2.0.5.RELEASE'
 }
 
-apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
 
 group = 'com.example'
@@ -17,18 +16,19 @@ repositories {
 	maven { url 'https://repo.spring.io/milestone' }
 }
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'mysql:mysql-connector-java'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
-}
 buildScan {
     termsOfServiceUrl = 'https://gradle.com/terms-of-service'
     termsOfServiceAgree = 'yes'
-    //publishAlways()
+    publishAlways()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'	
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'	
 }
 
 mainClassName = 'com.example.demo.DemoApplication'
